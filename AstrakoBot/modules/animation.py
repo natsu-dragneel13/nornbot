@@ -1,8 +1,8 @@
 import time
 
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import user_admin
+from AstrakoBot import dispatcher
+from AstrakoBot.modules.disable import DisableAbleCommandHandler
+from AstrakoBot.modules.helper_funcs.chat_status import user_admin
 from telegram import Update
 from telegram.ext import CallbackContext, run_async
 

@@ -1,9 +1,9 @@
 from functools import wraps
 
-from SaitamaRobot import (DEL_CMDS, DEV_USERS, SUDO_USERS, SUPPORT_CHAT,
+from AstrakoBot import (DEL_CMDS, DEV_USERS, SUDO_USERS, SUPPORT_CHAT,
                           SUPPORT_USERS, TIGER_USERS, WHITELIST_USERS,
                           dispatcher)
-from SaitamaRobot.mwt import MWT
+from AstrakoBot.mwt import MWT
 from telegram import Chat, ChatMember, ParseMode, Update
 from telegram.ext import CallbackContext
 
@@ -379,6 +379,6 @@ def connection_status(func):
 
 
 # Workaround for circular import with connection.py
-from SaitamaRobot.modules import connection
+from AstrakoBot.modules import connection
 
 connected = connection.connected

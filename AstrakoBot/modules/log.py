@@ -2,9 +2,9 @@ from telegram import Update
 
 from telegram.ext import CallbackContext, run_async, CommandHandler
 
-from SaitamaRobot import dispatcher
+from AstrakoBot import dispatcher
 
-from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
+from AstrakoBot.modules.helper_funcs.chat_status import dev_plus
 
 
 @run_async

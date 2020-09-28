@@ -1,5 +1,5 @@
-import SaitamaRobot.modules.sql.blacklistusers_sql as sql
-from SaitamaRobot import ALLOW_EXCL
+import AstrakoBot.modules.sql.blacklistusers_sql as sql
+from AstrakoBot import ALLOW_EXCL
 from telegram import MessageEntity, Update
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters
 from time import sleep

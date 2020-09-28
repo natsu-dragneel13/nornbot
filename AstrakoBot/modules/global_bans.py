@@ -2,19 +2,19 @@ import html
 import time
 from datetime import datetime
 from io import BytesIO
-from SaitamaRobot.modules.sql.users_sql import get_user_com_chats
-import SaitamaRobot.modules.sql.global_bans_sql as sql
-from SaitamaRobot import (DEV_USERS, GBAN_LOGS, OWNER_ID, STRICT_GBAN,
+from AstrakoBot.modules.sql.users_sql import get_user_com_chats
+import AstrakoBot.modules.sql.global_bans_sql as sql
+from AstrakoBot import (DEV_USERS, GBAN_LOGS, OWNER_ID, STRICT_GBAN,
                           SUDO_USERS, SUPPORT_CHAT, SPAMWATCH_SUPPORT_CHAT,
                           SUPPORT_USERS, TIGER_USERS, WHITELIST_USERS, sw,
                           dispatcher)
-from SaitamaRobot.modules.helper_funcs.chat_status import (is_user_admin,
+from AstrakoBot.modules.helper_funcs.chat_status import (is_user_admin,
                                                            support_plus,
                                                            user_admin)
-from SaitamaRobot.modules.helper_funcs.extraction import (extract_user,
+from AstrakoBot.modules.helper_funcs.extraction import (extract_user,
                                                           extract_user_and_text)
-from SaitamaRobot.modules.helper_funcs.misc import send_to_list
-from SaitamaRobot.modules.sql.users_sql import get_all_chats
+from AstrakoBot.modules.helper_funcs.misc import send_to_list
+from AstrakoBot.modules.sql.users_sql import get_all_chats
 from telegram import ParseMode, Update
 from telegram.error import BadRequest, TelegramError
 from telegram.ext import (CallbackContext, CommandHandler, Filters,
@@ -499,7 +499,7 @@ you and your groups by removing spam flooders as quickly as possible. They can b
 `/gbanstat`
 *Note:* Users can appeal gbans or report spammers at @{SUPPORT_CHAT}
 
-Saitama also integrates @Spamwatch API into gbans to remove Spammers as much as possible from your chatroom!
+AstrakoBot also integrates @Spamwatch API into gbans to remove Spammers as much as possible from your chatroom!
 *What is SpamWatch?*
 SpamWatch maintains a large constantly updated ban-list of spambots, trolls, bitcoin spammers and unsavoury characters[.](https://telegra.ph/file/f584b643c6f4be0b1de53.jpg)
 Constantly help banning spammers off from your group automatically So, you wont have to worry about spammers storming your group.
