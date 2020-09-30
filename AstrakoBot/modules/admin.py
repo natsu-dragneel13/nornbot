@@ -364,6 +364,7 @@ __help__ = """
  • `/pin`*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users.
  • `/unpin`*:* unpins the currently pinned message
  • `/invitelink`*:* gets invitelink
+ • `/link`*:* same as invitelink
  • `/promote`*:* promotes the user replied to
  • `/demote`*:* demotes the user replied to
  • `/settitle`*:* sets a custom title for an admin that the bot promoted
@@ -376,7 +377,7 @@ PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.group)
 UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.group)
 
 INVITE_HANDLER = DisableAbleCommandHandler(
-    "invitelink", invite, filters=Filters.group)
+    ["invitelink", "link"], invite, filters=Filters.group)
 
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote)
