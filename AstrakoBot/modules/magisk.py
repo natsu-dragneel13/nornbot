@@ -5,20 +5,18 @@ from requests import get
 from telegram import Bot, Update, ParseMode
 from telegram.ext import Updater, CommandHandler, dispatcher
 
+link = 'https://raw.githubusercontent.com/davinash97/magisk_files/'
+
 def magisk(update, context):
     magisk_dict = {
-        "*Stable*":
-        "https://raw.githubusercontent.com/topjohnwu/magisk_files/master/stable.json",
-        "\n"
-        "*Beta*":
-        "https://raw.githubusercontent.com/topjohnwu/magisk_files/master/beta.json",
-        "\n"
-        "*Canary*":
-        "https://raw.githubusercontent.com/topjohnwu/magisk_files/canary/canary.json",
-    }
+            "*Stable*": "master/stable.json", "\n"
+            "*Beta*": "master/beta.json", "\n"
+            "*Canary*": "canary/canary.json",
+        }
+    
     releases = '*Latest Magisk Releases:*\n\n'
     for magisk_type, release_url in magisk_dict.items():
-        data = get(release_url).json()
+        data = get(link + release_url).json()
         releases += f'{magisk_type}:\n' \
                     f'》 *Installer* - [Zip v{data["magisk"]["version"]}]({data["magisk"]["link"]}) \n' \
                     f'》 *Manager* - [App v{data["app"]["version"]}]({data["app"]["link"]}) \n' \
@@ -28,5 +26,12 @@ def magisk(update, context):
                              parse_mode=ParseMode.MARKDOWN,
                              disable_web_page_preview=True)
                              
+__help__ = """
+ - /magisk, /su, /root: fetches latest magisk.
+"""
 magisk_handler = CommandHandler(['magisk', 'root', 'su'], magisk)
-updater.dispatcher.add_handler(magisk_handler)
+dispatcher.add_handler(magisk_handler)
+
+__mod_name__ = "Magisk"
+__command_list__ = ["magisk", 'root', 'su']
+__handlers__ = [magisk_handler]
