@@ -3,7 +3,8 @@
 # By DAvinash97
 from requests import get
 from telegram import Bot, Update, ParseMode
-from telegram.ext import Updater, CommandHandler, dispatcher
+from telegram.ext import Updater, CommandHandler
+from AstrakoBot import dispatcher
 
 link = 'https://raw.githubusercontent.com/davinash97/magisk_files/'
 
