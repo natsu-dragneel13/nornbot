@@ -6,7 +6,10 @@ from telegram import Bot, Update, ParseMode
 from telegram.ext import Updater, CommandHandler
 from AstrakoBot import dispatcher
 
-link = 'https://raw.githubusercontent.com/davinash97/magisk_files/'
+# To fetch latest files
+blob = "https://raw.githubusercontent.com/davinash97/magisk_files/"
+# To fetch latest versions
+link = "https://raw.githubusercontent.com/topjohnwu/magisk_files/"
 
 def magisk(update, context):
     bot=context.bot
@@ -18,7 +21,7 @@ def magisk(update, context):
     
     releases = '*Latest Magisk Releases:*\n\n'
     for magisk_type, release_url in magisk_dict.items():
-        data = get(link + release_url).json()
+        data = get(blob + release_url).json()
         version = get(link + release_url).json()
         releases += f'{magisk_type}:\n' \
                     f'》 *Installer* - [{version["magisk"]["version"]} ({data["magisk"]["versionCode"]})]({data["magisk"]["link"]}) \n' \
