@@ -9,6 +9,7 @@ from AstrakoBot import dispatcher
 link = 'https://raw.githubusercontent.com/davinash97/magisk_files/'
 
 def magisk(update, context):
+    bot=context.bot
     magisk_dict = {
             "*Stable*": "master/stable.json", "\n"
             "*Beta*": "master/beta.json", "\n"
@@ -18,11 +19,12 @@ def magisk(update, context):
     releases = '*Latest Magisk Releases:*\n\n'
     for magisk_type, release_url in magisk_dict.items():
         data = get(link + release_url).json()
+        version = get(link + release_url).json()
         releases += f'{magisk_type}:\n' \
-                    f'》 *Installer* - [Zip v{data["magisk"]["version"]}]({data["magisk"]["link"]}) \n' \
-                    f'》 *Manager* - [App v{data["app"]["version"]}]({data["app"]["link"]}) \n' \
-                    f'》 *Uninstaller* - [Uninstaller v{data["magisk"]["version"]}]({data["uninstaller"]["link"]}) \n'
-    context.bot.send_message(chat_id = update.effective_chat.id,
+                    f'》 *Installer* - [{version["magisk"]["version"]} ({data["magisk"]["versionCode"]})]({data["magisk"]["link"]}) \n' \
+                    f'》 *Manager* - [{version["app"]["version"]} ({data["app"]["versionCode"]})]({data["app"]["link"]}) \n' \
+                    f'》 *Uninstaller* - [Uninstaller {version["magisk"]["version"]} ({data["magisk"]["versionCode"]})]({data["uninstaller"]["link"]}) \n'
+    bot.send_message(chat_id = update.effective_chat.id,
                              text=releases,
                              parse_mode=ParseMode.MARKDOWN,
                              disable_web_page_preview=True)
