@@ -57,7 +57,7 @@ I am a modular group management bot.
 You can find my list of available commands with 👉 /help.
 
 ===================
-My owner [Frost](t.me/frostid)
+My owner [Frost](t.me/frost_id)
 """
 
 HELP_STRINGS = """
