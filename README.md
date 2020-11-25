@@ -171,7 +171,7 @@ For queries or any issues regarding the bot please open an issue ticket or visit
 ## How to setup on Heroku 
 For starters click on this button 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Astrako/AstrakoBot.git) 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/frostid/FrostFrostRobot.git) 
 
 
 ## Credits
@@ -182,4 +182,6 @@ Also, missing proper credit for blacklistusers taken from TheRealPhoenixBot (wil
 
 Any other authorship/credits can be seen through the commits.
 
-Should any be missing kindly let us know at [AstrakoBotSupport](https://t.me/AstrakoBotSupport) or simply submit a pull request on the readme.
+Should any be missing kindly let us know at [Frost Support](https://t.me/FrostSupport) or simply submit a pull request on the readme.
+
+Astrako - [Repo](https://github.com/Astrako)
