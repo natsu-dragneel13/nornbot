@@ -184,4 +184,4 @@ Any other authorship/credits can be seen through the commits.
 
 Should any be missing kindly let us know at [Frost Support](https://t.me/FrostSupport) or simply submit a pull request on the readme.
 
-Astrako - [Repo](https://github.com/Astrako)
+[Astrako](https://github.com/Astrako) - Repo
