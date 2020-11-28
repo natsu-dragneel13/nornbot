@@ -52,11 +52,11 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hi *{}*, my name is *{}*! 
-I am a modular group management bot.
+I am a modular group management bot for [Deagle kernel group](t.me/deaglekernel)
 
 You can find my list of available commands with 👉 /help.
 
-===================
+================
 My owner [Frost](t.me/frost_id)
 """
 
@@ -80,7 +80,7 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-ASTRAKOBOT_IMG = "https://telegra.ph/file/78fa89546e289b2ac0692.jpg"
+ASTRAKOBOT_IMG = "https://telegra.ph/file/8e26dce1b09d5e5265080.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 Frost Bot is hosted on its own server and doesn't require any donations as of now but \
@@ -203,24 +203,24 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text="✅ Add Frost to your group",
+                            text="✅ Add Deagle Bot to your group",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
                     ],
                      [
                          InlineKeyboardButton(
-                             text="Support Group",
-                             url=f"https://t.me/FrostSupport"),
+                             text="Deagle Group",
+                             url=f"https://t.me/deaglekernel"),
                      ],
                      [
                          InlineKeyboardButton(
-                             text="Getting started guide",
-                             url="https://t.me/OnePunchUpdates/29")
+                             text="Updates Channel",
+                             url="https://t.me/deaglechannel")
                      ],
                      [
                          InlineKeyboardButton(
-                             text="Source code",
-                             url="https://github.com/frostid/FrostRobot")
+                             text="Source kernel",
+                             url="https://github.com/DDEAGLE1/kernel-sdm660")
                      ]]))
     else:
         update.effective_message.reply_text(
