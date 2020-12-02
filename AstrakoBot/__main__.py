@@ -80,7 +80,7 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-ASTRAKOBOT_IMG = "https://telegra.ph/file/78fa89546e289b2ac0692.jpg"
+ASTRAKOBOT_IMG = "https://telegra.ph/file/9dc9f28fc115805f6ca73.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 Frost Bot is hosted on its own server and doesn't require any donations as of now but \
