@@ -1,8 +1,10 @@
 import random, html
 
 from AstrakoBot import dispatcher
-from AstrakoBot.modules.disable import (DisableAbleCommandHandler,
-                                          DisableAbleMessageHandler)
+from AstrakoBot.modules.disable import (
+    DisableAbleCommandHandler,
+    DisableAbleMessageHandler,
+)
 from AstrakoBot.modules.sql import afk_sql as sql
 from AstrakoBot.modules.users import get_user_id
 from telegram import MessageEntity, Update
@@ -52,7 +54,7 @@ def no_longer_afk(update: Update, context: CallbackContext):
 
     res = sql.rm_afk(user.id)
     if res:
-        if message.new_chat_members:  #dont say msg
+        if message.new_chat_members:  # dont say msg
             return
         firstname = update.effective_user.first_name
         try:
@@ -74,9 +76,11 @@ def reply_afk(update: Update, context: CallbackContext):
     userc = update.effective_user
     userc_id = userc.id
     if message.entities and message.parse_entities(
-        [MessageEntity.TEXT_MENTION, MessageEntity.MENTION]):
+        [MessageEntity.TEXT_MENTION, MessageEntity.MENTION]
+    ):
         entities = message.parse_entities(
-            [MessageEntity.TEXT_MENTION, MessageEntity.MENTION])
+            [MessageEntity.TEXT_MENTION, MessageEntity.MENTION]
+        )
 
         chk_users = []
         for ent in entities:
@@ -88,27 +92,24 @@ def reply_afk(update: Update, context: CallbackContext):
                     return
                 chk_users.append(user_id)
 
-            if ent.type == MessageEntity.MENTION:
-                user_id = get_user_id(message.text[ent.offset:ent.offset +
-                                                   ent.length])
-                if not user_id:
-                    # Should never happen, since for a user to become AFK they must have spoken. Maybe changed username?
-                    return
-
-                if user_id in chk_users:
-                    return
-                chk_users.append(user_id)
-
-                try:
-                    chat = bot.get_chat(user_id)
-                except BadRequest:
-                    print("Error: Could not fetch userid {} for AFK module"
-                          .format(user_id))
-                    return
-                fst_name = chat.first_name
-
-            else:
+            if ent.type != MessageEntity.MENTION:
                 return
+
+            user_id = get_user_id(message.text[ent.offset : ent.offset + ent.length])
+            if not user_id:
+                # Should never happen, since for a user to become AFK they must have spoken. Maybe changed username?
+                return
+
+            if user_id in chk_users:
+                return
+            chk_users.append(user_id)
+
+            try:
+                chat = bot.get_chat(user_id)
+            except BadRequest:
+                print("Error: Could not fetch userid {} for AFK module".format(user_id))
+                return
+            fst_name = chat.first_name
 
             check_afk(update, context, user_id, fst_name, userc_id)
 
@@ -121,6 +122,8 @@ def reply_afk(update: Update, context: CallbackContext):
 def check_afk(update, context, user_id, fst_name, userc_id):
     if sql.is_afk(user_id):
         user = sql.check_afk_status(user_id)
+        if int(userc_id) == int(user_id):
+            return
         if not user.reason:
             if int(userc_id) == int(user_id):
                 return
@@ -142,7 +145,8 @@ When marked as AFK, any mentions will be replied to with a message to say you're
 
 AFK_HANDLER = DisableAbleCommandHandler("afk", afk)
 AFK_REGEX_HANDLER = DisableAbleMessageHandler(
-    Filters.regex(r"^(?i)brb(.*)$"), afk, friendly="afk")
+    Filters.regex(r"^(?i)brb(.*)$"), afk, friendly="afk"
+)
 NO_AFK_HANDLER = MessageHandler(Filters.all & Filters.group, no_longer_afk)
 AFK_REPLY_HANDLER = MessageHandler(Filters.all & Filters.group, reply_afk)
 
@@ -153,6 +157,9 @@ dispatcher.add_handler(AFK_REPLY_HANDLER, AFK_REPLY_GROUP)
 
 __mod_name__ = "AFK"
 __command_list__ = ["afk"]
-__handlers__ = [(AFK_HANDLER, AFK_GROUP), (AFK_REGEX_HANDLER, AFK_GROUP),
-                (NO_AFK_HANDLER, AFK_GROUP),
-                (AFK_REPLY_HANDLER, AFK_REPLY_GROUP)]
+__handlers__ = [
+    (AFK_HANDLER, AFK_GROUP),
+    (AFK_REGEX_HANDLER, AFK_GROUP),
+    (NO_AFK_HANDLER, AFK_GROUP),
+    (AFK_REPLY_HANDLER, AFK_REPLY_GROUP),
+]
