@@ -225,27 +225,35 @@ def start(update: Update, context: CallbackContext):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[
-                        InlineKeyboardButton(
-                            text=" 🌟 Add Me To Your Group 🌟 ",
-                            url="t.me/{}?startgroup=true".format(
-                                context.bot.username))
-                    ],
-                     [
-                         InlineKeyboardButton(
-                             text=" Anime Group Indo ",
-                             url=f"https://t.me/animegrupindo"),
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text=" Anime Channel Indo ",
-                             url="https://t.me/animechanelindo")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text=" 🚫 GBAN LOGS ",
-                             url="https://t.me/gbanlogs_bot")
-                     ]]))
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text=" 🌟 Add Me To Your Group 🌟 ",
+                                url="t.me/{}?startgroup=true".format(
+                                    context.bot.username
+                                ),
+                            )
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text=" Anime Group Indo ",
+                                url=f"https://t.me/animegrupindo",
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text=" Anime Channel Indo ",
+                                url="https://t.me/animechanelindo",
+                            )
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text=" 🚫 GBAN LOGS ", url="https://t.me/gbanlogs_bot"
+                            )
+                        ],
+                    ]
+                ),
+            )
     else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
